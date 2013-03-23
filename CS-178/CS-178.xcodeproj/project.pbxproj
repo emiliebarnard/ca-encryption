@@ -8,6 +8,7 @@
 
 /* Begin PBXFileReference section */
 		A82ECC3E16FE304B0050252C /* code.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = code.py; sourceTree = "<group>"; };
+		A82ECC3F16FE583F0050252C /* caScript.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = caScript.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -15,6 +16,7 @@
 			isa = PBXGroup;
 			children = (
 				A82ECC3E16FE304B0050252C /* code.py */,
+				A82ECC3F16FE583F0050252C /* caScript.js */,
 			);
 			sourceTree = "<group>";
 		};

@@ -1,0 +1,1 @@
+<button type="button" onclick="alert('Welcome!')">Click Me!</button>

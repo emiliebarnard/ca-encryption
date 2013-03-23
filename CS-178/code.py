@@ -2,7 +2,7 @@
 #Project for Professor Koc's CS178 at UC Santa Barbara, Winter 2013
 
 #CELLULAR AUTOMATA ENCRYPTION
-#Note: I used WolframAlpha as my source for all of the rule definitions
+#Note: I used Wolfram Alpha (http://www.wolframalpha.com) as my source for all of the rule definitions
 
 import copy
 
