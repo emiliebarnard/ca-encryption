@@ -1,43 +1,49 @@
-<!doctype html>
- 
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8" />
-  <title>jQuery UI Selectable - Display as grid</title>
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
-  <link rel="stylesheet" href="/resources/demos/style.css" />
- 
-  <style>
-  #feedback { font-size: 1.4em; }
-  #selectable .ui-selecting { background: #FECA40; }
-  #selectable .ui-selected { background: #F39814; color: white; }
-  #selectable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
-  #selectable li { margin: 3px; padding: 1px; float: left; width: 100px; height: 80px; font-size: 4em; text-align: center; }
-  </style>
-  <script>
-  $(function() {
-    $( "#selectable" ).selectable();
-  });
-  </script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $(":checkbox").wrap("<span style='foreground-color:red' />");
+});
+</script>
 </head>
 <body>
- 
-<ol id="selectable">
-  <li class="ui-state-default">1</li>
-  <li class="ui-state-default">2</li>
-  <li class="ui-state-default">3</li>
-  <li class="ui-state-default">4</li>
-  <li class="ui-state-default">5</li>
-  <li class="ui-state-default">6</li>
-  <li class="ui-state-default">7</li>
-  <li class="ui-state-default">8</li>
-  <li class="ui-state-default">9</li>
-  <li class="ui-state-default">10</li>
-  <li class="ui-state-default">11</li>
-  <li class="ui-state-default">12</li>
-</ol>
- 
- 
+
+<form action="">
+<input type="checkbox" name="initialVector" value="0">
+<input type="checkbox" name="initialVector" value="1">
+<input type="checkbox" name="initialVector" value="2">
+<input type="checkbox" name="initialVector" value="3">
+<input type="checkbox" name="initialVector" value="4">
+<input type="checkbox" name="initialVector" value="5">
+<input type="checkbox" name="initialVector" value="6">
+<input type="checkbox" name="initialVector" value="7">
+<input type="checkbox" name="initialVector" value="8">
+<input type="checkbox" name="initialVector" value="9">
+<input type="checkbox" name="initialVector" value="10">
+<input type="checkbox" name="initialVector" value="11">
+<input type="checkbox" name="initialVector" value="12">
+<input type="checkbox" name="initialVector" value="13">
+<input type="checkbox" name="initialVector" value="14">
+<input type="checkbox" name="initialVector" value="15">
+<input type="checkbox" name="initialVector" value="16">
+<input type="checkbox" name="initialVector" value="17">
+<input type="checkbox" name="initialVector" value="18">
+<input type="checkbox" name="initialVector" value="19">
+<input type="checkbox" name="initialVector" value="20">
+
+
+<input type="Submit">
+</form>
+
+
+for (var iterationCount=0; 21 ;iterationCount++){
+	
+}
+
+
+
 </body>
 </html>
