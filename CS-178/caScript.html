@@ -34,6 +34,8 @@ function runit() {
    Sk.pre = "output";
    Sk.configure({output:outf, read:builtinRead});
    eval(Sk.importMainWithBody("<stdin>",false,prog));
+   
+   document.write(Sk.pre+"<br>")
 }
 </script>
 
@@ -104,11 +106,9 @@ numSteps=8
 
 ca(inputVector, rule, numSteps)
 </textarea><br />
-<button type="button" onclick="runit()">Run</button>
+<button type="button" onclick="runit()">Start Encryption!</button>
 </form>
 <pre id="output" ></pre>
-<!-- If you want turtle graphics include a canvas -->
-<canvas id="mycanvas" ></mycanvas>
 
 </body>
 
