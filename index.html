@@ -1,74 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <title>CA-Encryption by embarnard</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <title>CA-Encryption by embarnard</title>
   </head>
-
   <body>
-    <header>
-      <div class="inner">
+    <div class="wrapper">
+      <header>
         <h1>CA-Encryption</h1>
-        <h2>Cellular Automata Encryption</h2>
-        <a href="https://github.com/embarnard/CA-Encryption" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
+        <p>Cellular Automata Encryption</p>
+        <p class="view"><a href="https://github.com/embarnard/CA-Encryption">View the Project on GitHub <small>embarnard/CA-Encryption</small></a></p>
+        <ul>
+          <li><a href="https://github.com/embarnard/CA-Encryption/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/embarnard/CA-Encryption/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/embarnard/CA-Encryption">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>About Cellular Automata</h3>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>Cellular Automata Encryption.</h3>
+<p>"A cellular automaton (CA) consists of a regular grid of cells, each in one of a finite number of states, such as on and off. For each cell, a set of cells called its neighborhood is defined relative to the specified cell. An initial state is selected by assigning a state for each cell. A new generation is created according to some fixed rule. This rule determines the new state of each cell in terms of the current state of the cell and the states of the cells in its neighborhood."-<a href="http://en.wikipedia.org/wiki/Cellular_automaton">Wikipedia</a></p>
 
-<p>About CA and CA30, CA45, CA110 here.
-<br>Link to this article: <a href="http://www.technologyreview.com/view/426536/encrypting-pictures-using-chaotic-cellular-automata/">http://www.technologyreview.com/view/426536/encrypting-pictures-using-chaotic-cellular-automata/</a></p>
+<p>CA are used for many applications, including <a href="http://www.technologyreview.com/view/426536/encrypting-pictures-using-chaotic-cellular-automata/">encrypting pictures</a>.</p>
 
-<h3>User Guide</h3>
+<h3>The CA Generator</h3>
 
-<p>Explain how to use GUI here. </p>
+<p>I designed this CA generator as a final project for my Cryptography course at UC Santa Barbara. It invokes a python script that I wrote to take in a vector input and rule number, and output the resulting CA grid. Each new generation of a given cell depends on the parent cell and the parent's two neighboring cells. Thus, there are 256 different possible rules than can be used. For this reason, any rule number input will taken as mod 256. </p>
 
 <h3>Try it out!</h3>
 
-<p>Try it out for yourself <a href="http://htmlpreview.github.com/?https://github.com/embarnard/CS-178/blob/master/CS-178/caScript.html">here</a>.</p>
+<p>By clicking on the boxes in the first row, you turn a specific cell on or off. Running the generator on different inputs and rules will give different outputs. You can also set the number of rows and columns for the grid, and your preferred color scheme. If you'd like to see the step-by-step progress of the generator, enable the animation.
+Try it out for yourself <a href="http://embarnard.com/ca.html">here</a>.</p>
 
 <h3>Authors and Contributors</h3>
 
-<p>© Emilie Menard Barnard (<a href="https://github.com/embarnard" class="user-mention">@embarnard</a>), 2013
-<br>Rule Definitions from <a href="http://www.wolframalpha.com">Wolfram Alpha</a>
-<br>Special thanks to Professor Koç (link to his website here)</p>
+<p>Emilie Menard Barnard (<a href="https://github.com/embarnard" class="user-mention">@embarnard</a>), 2013
+<br>Rule Definitions from <a href="http://www.wolframalpha.com">Wolfram Alpha</a></p>
 
 <h3>Support or Contact</h3>
 
 <p>Questions? Comments? Bugs? E-mail Emilie Menard Barnard (<a href="https://github.com/embarnard" class="user-mention">@embarnard</a>) at <a href="mailto:emiliebarnard@gmail.com">emiliebarnard@gmail.com</a>.</p>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/embarnard/CA-Encryption/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/embarnard/CA-Encryption/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/embarnard/CA-Encryption"></a> is maintained by <a href="https://github.com/embarnard">embarnard</a>.</p>
-
-          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+      </section>
     </div>
-
-  
+    <footer>
+      <p>Project maintained by <a href="https://github.com/embarnard">embarnard</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
   </body>
 </html>
