@@ -1,0 +1,139 @@
+body
+{
+}
+
+p {
+    color: #888888;
+	font-size: 12px;
+    font-family: verdana;
+    text-align: center;
+    width: 500px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+b, i, u {
+	color: #000000;
+	font-family: verdana;
+	font-size: 12px;
+}
+
+a:link, a:active, a:visited, a {
+	color: #555555;
+	text-decoration:none
+}
+
+a:hover b, a:hover {
+	color: #cccccc;
+}
+
+h1 {
+	color: #555555;
+	font-size: 22px;
+    font-family: verdana;
+	text-align: center;
+}
+
+h2 {
+	color: #555555;
+	font-size: 15px;
+    font-family: verdana;
+	text-align: center;
+}
+
+copyright {
+	color: #999999;
+	font-size: 10px;
+    font-family: verdana;
+    text-align: center;
+}
+
+.userInputParams{
+	
+}
+
+.userInputRow{
+	border-bottom-style:dashed;
+	border-bottom-color:#999999;
+	border-bottom-width: 1px;
+	display:inline;
+}
+
+.outputRows{
+	margin-top: 3px;
+}
+
+
+.buttonOn1{
+	width: 12px;	
+	height: 12px;
+	background-color: #dd62bc;
+	display: inline-block;
+	margin-right:2px;
+	margin-left:2px;
+}
+
+.buttonOff1{
+	width: 12px;	
+	height: 12px;
+	background-color: rgba(216,246,252,0.83);
+	display: inline-block;
+	margin-right:2px;
+	margin-left:2px;
+}
+
+.buttonOn2{
+	width: 12px;	
+	height: 12px;
+	background-color: #67b1f5;
+	display: inline-block;
+	margin-right:2px;
+	margin-left:2px;
+}
+
+.buttonOff2{
+width: 12px;	
+	height: 12px;
+	background-color: #fbc37f;
+	display: inline-block;
+	margin-right:2px;
+	margin-left:2px;
+}
+
+
+.buttonOn3{
+	width: 12px;	
+	height: 12px;
+	background-color: #4eb627;
+	display: inline-block;
+	margin-right:2px;
+	margin-left:2px;
+}
+
+.buttonOff3{
+	width: 12px;	
+	height: 12px;
+	background-color: #fffbb3;
+	display: inline-block;
+	margin-right:2px;
+	margin-left:2px;
+}
+
+
+.buttonOn4{
+	width: 12px;	
+	height: 12px;
+	background-color: #555555;
+	display: inline-block;
+	margin-right:2px;
+	margin-left:2px;
+}
+
+.buttonOff4{
+	width: 12px;	
+	height: 12px;
+	background-color: #d99ff8;
+	display: inline-block;
+	margin-right:2px;
+	margin-left:2px;
+}

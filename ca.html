@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+<script type="text/javascript" src="ca.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-39554842-1', 'embarnard.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script>
+/*Set up JQuery Variables for the two different boxes:*/
+  var boxOff=$("<div class=\"buttonOff1\"></div>");
+  var boxOn=$("<div class=\"buttonOn1\"></div>");
+  
+/* Defining what happens when a box is clicked   */
+  boxOff.click(function(){
+  		if (!running){
+/*   		The box classes depend on the color scheme determined by the user */
+  			switch (colors){ 
+	  			case 1:
+	  				$(this).toggleClass('buttonOn1 buttonOff1');
+	  				break;
+	  			case 2:
+	  				$(this).toggleClass('buttonOn2 buttonOff2');
+	  				break;
+	  			case 3:
+	  				$(this).toggleClass('buttonOn3 buttonOff3');
+	  				break;
+	  			case 4:
+	  				$(this).toggleClass('buttonOn4 buttonOff4');
+	  				break;
+  			} 
+		}
+  });
+  
+/* This is just like the above click function, but for boxes that were already toggled on */
+    boxOn.click(function(){
+  		if (!running){
+  			switch (colors){
+	  			case 1:
+	  				$(this).toggleClass('buttonOn1 buttonOff1');
+	  				break;
+	  			case 2:
+	  				$(this).toggleClass('buttonOn2 buttonOff2');
+	  				break;
+	  			case 3:
+	  				$(this).toggleClass('buttonOn3 buttonOff3');
+	  				break;
+	  			case 4:
+	  				$(this).toggleClass('buttonOn4 buttonOff4');
+	  				break;
+  			} 
+ 
+		}
+  });
+
+/* Global values */
+  var running=false;
+  var colors=1;
+  
+  
+/* This produces the default off columns based on the number of columns specified */
+function defaultCols(colNumber){
+	for (var vectorIndex=0; vectorIndex<colNumber; vectorIndex++){
+		 $('.userInputRow').append(boxOff.clone(true));
+	}
+/* 	To keep the css pretty: */
+  $('.userInputRow > div:first').css('margin-left', '0px');
+  $('.userInputRow > div:last').css('margin-right', '0px');
+  
+}
+
+/* This function is called when the user clicks select all. It toggles all boxes to on */
+function selectAll(){
+	$('.userInputRow').empty();
+	for (var vectorIndex=0; vectorIndex<(parseInt($("#cols").val())); vectorIndex++){
+		 $('.userInputRow').append(boxOn.clone(true));
+	}
+/* 	To keep the css pretty: */
+  $('.userInputRow > div:first').css('margin-left', '0px');
+  $('.userInputRow > div:last').css('margin-right', '0px');
+}
+
+/* This function is called when the user clicks clear, or when the color scheme is changed. It toggles all boxes to off */
+function clearAll(){
+	$('.userInputRow').empty();
+	defaultCols(parseInt($("#cols").val()));
+}
+
+/* This function stops the animation stepping when the user clicks the stop animation button during an animation */
+function stopAnimate(){
+/* Stop all currently running timeouts*/
+	var allTimeouts = window.setTimeout(function() {}, 0);
+	while (allTimeouts--) {
+    		window.clearTimeout(allTimeouts);
+    }
+/*     Then reset all buttions, since we won't get to the last timeout that does this */
+    $("#submitButton").removeAttr('disabled');
+	$("#rows").removeAttr('disabled');
+	$("#ruleNo").removeAttr('disabled');
+	$("#cols").removeAttr('disabled');
+	$("#animate").removeAttr('disabled');
+	$("#stopAnimateButton").hide()
+	$("#clearAllButton").show();
+	$("#selectAllButton").show();
+	running=false;
+}
+  
+/* This function is called when the user changes the number of desired columns */
+function changeCols(colNumber){	
+/* To keep the css pretty: */
+	$('.userInputRow > div:first').css('margin-left', '2px');
+	$('.userInputRow > div:last').css('margin-right', '2px');
+	
+	/* First count the current number of cols: */
+	var oldColNumber=$('.userInputRow div').length;
+	
+	/*Case we're increasing the number of columns:*/
+	if (oldColNumber<parseInt($('#cols').val())){
+	
+/* 	We want to build around the current boxes, in case the user has input */
+		for (var vectorIndex=0; vectorIndex<((colNumber-oldColNumber)/2); vectorIndex++){
+		 	$('.userInputRow').prepend(boxOff.clone(true));
+		 	$('.userInputRow').append(boxOff.clone(true)); 
+		  }
+	}
+	
+	/* Case we're decreasing the number of columns, we remove boxes around the center*/
+	else
+		for (var vectorIndex=0; vectorIndex<((oldColNumber-colNumber)/2); vectorIndex++){
+		 	$('.userInputRow > div:first').remove();
+		 	$('.userInputRow > div:last').remove();
+		  }
+		  
+/* To keep the css pretty: */
+  $('.userInputRow > div:first').css('margin-left', '0px');
+  $('.userInputRow > div:last').css('margin-right', '0px');
+}
+
+/* The next four functions are called when the color is changed. They toggle different classes of boxes that have the different color schemes. */
+
+/* This is the blue/pink color scheme */
+function changeColor1(){
+	colors=1;
+	boxOff.attr('class', 'buttonOff1');
+    boxOn.attr('class','buttonOn1');
+    clearAll();
+}
+
+/* This is the orange/blue color scheme */
+function changeColor2(){
+	colors=2;
+	boxOff.attr('class','buttonOff2');
+    boxOn.attr('class','buttonOn2');
+    clearAll();
+}
+
+/* This is the yellow/green color scheme */
+function changeColor3(){
+	colors=3;
+	boxOff.attr('class','buttonOff3');
+    boxOn.attr('class','buttonOn3');
+    clearAll();
+}
+
+/* This is the purple/black color scheme */
+function changeColor4(){
+	colors=4;
+	boxOff.attr('class','buttonOff4');
+    boxOn.attr('class','buttonOn4');
+    clearAll();
+}
+
+/*This submitClick function is called when the user hits the button, and calls the encryption python script    */
+function submitClick(){	
+/* First clear out the current rows */
+	$('.outputRows').empty();
+	$('.outputRows').append('<p>Encrypting...</p>');
+
+	var input="";
+	var animateBool=false;
+
+	var numRows=$('#rows').val();
+	var ruleNumber=$('#ruleNo').val();
+	
+	/*We need to determine the input to the python script based on what the user clicked*/
+	var inputBoxes=$('.userInputRow > div');
+	
+	/*Loop though each of the input boxes*/
+	for (inputIndex=0; inputIndex<inputBoxes.length; inputIndex++){
+		
+		/*Case that it's a zero...cell is off*/
+		if (inputBoxes[inputIndex].className=='buttonOff1' || inputBoxes[inputIndex].className=='buttonOff2' || inputBoxes[inputIndex].className=='buttonOff3' || inputBoxes[inputIndex].className=='buttonOff4')
+			input+="0";
+			
+		/*Case that it's a one...cell is on*/
+		if (inputBoxes[inputIndex].className=='buttonOn1' || inputBoxes[inputIndex].className=='buttonOn2' || inputBoxes[inputIndex].className=='buttonOn3' || inputBoxes[inputIndex].className=='buttonOn4')
+			input+="1";
+			
+		if (inputIndex!=inputBoxes.length-1)
+			input+=" ";
+	}
+
+/* This is so we can communicate with the python script */
+	  var request = $.ajax({
+	  url: "ca.py",
+	  type: "GET",
+	  data: {rule: ruleNumber, numSteps: numRows, inputVector: input},
+	  dataType: "html"
+	});
+ 
+/*  When we're done communicating with the python script, this is where we are: */
+	request.done(function(msg) {
+	running=true;
+	
+/* 	We don't want the user to be able to change the inputs when the code is running: */
+	  $("#submitButton").attr('disabled','disabled');
+	  $("#rows").attr('disabled','disabled');
+	  $("#ruleNo").attr('disabled','disabled');
+	  $("#cols").attr('disabled','disabled');
+	  $("#animate").attr('disabled','disabled');	
+
+/* Hide unncessary buttons */
+	  $("#clearAllButton").hide();
+	  $("#selectAllButton").hide();
+	  
+/* 	  Animation case */
+	  if ($("#animateCheckbox").is(':checked')){
+		animateBool=true;
+		$("#stopAnimateButton").show()
+		}
+		
+/* 	  Getting the output of the python code: */
+	  var vectorRows=msg.split("\n");
+	 
+	  var rowIndex=0;
+	  $('.outputRows').empty();
+	  
+	  	  /* This loops through each row of the output */
+	  for (rowIndex=0; rowIndex<vectorRows.length; rowIndex++){
+		  var vectorEntries=vectorRows[rowIndex].split(" ");
+
+		  /*This loops through each entry that was outputted in the current row*/
+		  for (var entryIndex=0; entryIndex<vectorEntries.length; entryIndex++){
+  
+		/* Case that it's a zero: */
+			  if (vectorEntries[entryIndex]=="0")
+			  	if (animateBool){ /*animation requested*/
+					timeout0=setTimeout(function(){
+							$('.outputRows').append(boxOff.clone());
+						}, 500*(rowIndex+1));
+			  		}
+			  	else
+			  		$('.outputRows').append(boxOff.clone());
+			  		
+		/* Case that it's a one: */
+			  if (vectorEntries[entryIndex]=="1")
+			  	if (animateBool){ /*animation requested*/
+					timeout1=setTimeout(function(){
+						$('.outputRows').append(boxOn.clone());
+					}, 500*(rowIndex+1));
+		  		}
+			  	else
+			  		$('.outputRows').append(boxOn.clone());
+		  }
+			
+		
+		if (animateBool){/*animation requested*/
+			timeoutNewLine=setTimeout(function(){
+			$('.outputRows').append('<br>');	
+			}, 500*(rowIndex+1));  
+		}
+		
+		else
+			$('.outputRows').append('<br>');	  
+	  }
+	  
+/* 	  Bring back everything we diabled before */
+
+	  if (animateBool){/*animation requested*/
+			setTimeout(function(){
+				$("#submitButton").removeAttr('disabled');
+				$("#rows").removeAttr('disabled');
+				$("#ruleNo").removeAttr('disabled');
+				$("#cols").removeAttr('disabled');
+				$("#animate").removeAttr('disabled');
+				$("#stopAnimateButton").hide()
+				$("#clearAllButton").show();
+				$("#selectAllButton").show();
+				running=false;
+			}, 500*(rowIndex+1));
+	  }
+	  else{
+	  		$("#submitButton").removeAttr('disabled');
+			$("#rows").removeAttr('disabled');
+			$("#ruleNo").removeAttr('disabled');
+			$("#cols").removeAttr('disabled');
+			$("#animate").removeAttr('disabled');
+			$("#clearAllButton").show();
+			$("#selectAllButton").show();
+			running=false;
+			}
+			
+	});
+	 
+/* 	 case that our communication with the python script didn't work */
+	request.fail(function(jqXHR, textStatus) {
+	  
+	  alert( "Request failed: " + textStatus );
+	
+	});
+}
+
+/***************************************************************/
+
+/* Finally at the document ready function! */
+$(document).ready(function(){
+
+/*   Set up the default settings: */
+  defaultCols(9);
+  $("#stopAnimateButton").hide()
+
+/* This allows the user to press enter rather than the start encryption button while in the rule number form box */
+  $("input").keypress(function(event) {
+    if (event.which == 13 && $("#submitButton").attr('disabled')!='disabled') {
+        $("#submitButton").click();
+    }
+    });
+  
+/* This calls the changeCols funtion when the user changes the number of columns in the drop-down   */
+  $('#cols').change(function(){
+	  changeCols(parseInt($(this).val()));
+  }); 
+    
+});	 
+
+</script>
+</head>
+
+<body>
+<h1>Cellular Automata Encryption</h1>
+<copyright><center>Emilie Menard Barnard</center></copyright>
+
+<h2>About Cellular Automata</h2>
+<p>"A cellular automaton (CA) consists of a regular grid of cells, each in one of a finite number of states, such as on and off. For each cell, a set of cells called its neighborhood is defined relative to the specified cell. An initial state is selected by assigning a state for each cell. A new generation is created according to some fixed rule. This rule determines the new state of each cell in terms of the current state of the cell and the states of the cells in its neighborhood."-<a href="http://en.wikipedia.org/wiki/Cellular_automaton">Wikipedia</a><br>
+<br>CA are used for many applications, including <a href="http://www.technologyreview.com/view/426536/encrypting-pictures-using-chaotic-cellular-automata/">encrypting pictures</a>.</p>
+
+<h2>This CA Generator</h2>
+<p>I designed this CA generator as a final project for my Cryptography course at UC Santa Barbara. It invokes a python script that I wrote to take in a vector input and rule number, and output the resulting CA grid. Each new generation of a given cell depends on the parent cell and the parent's two neighboring cells. Thus, there are 256 different possible rules than can be used. For this reason, any rule number input will taken as mod 256. By clicking on the boxes in the first row, you turn a specific cell on or off. Running the generator on different inputs and rules will give different outputs. You can also set the number of rows and columns for the grid, and your preferred color scheme. If you'd like to see the step-by-step progress of the generator, enable the animation. Enjoy!</p>
+
+<p>Color Scheme:
+&thinsp;
+<img src="colors1.png"><input type="radio" name="colorScheme" id=bluePink checked="checked" onclick="changeColor1()"/>
+ &emsp;   
+<img src="colors2.png"><input type="radio" name="colorScheme" id=orangeBlue onclick="changeColor2()" />
+   &emsp; 
+<img src="colors3.png"><input type="radio" name="colorScheme" id=yellowGreen onclick="changeColor3()" />
+ &emsp;  
+<img src="colors4.png"><input type="radio" name="colorScheme" id=purpleGrey onclick="changeColor4()"/></p>
+
+<center>
+<div class="userInputParams"><p>
+Number of Columns:
+<select id="cols">
+  <option value="9">9</option>
+  <option value="17">17</option>
+  <option value="33">33</option>
+  <option value="65">65</option>
+</select>
+<br>
+Number of Rows:
+<select id="rows">
+  <option value="20">20</option>
+  <option value="50">50</option>
+  <option value="100">100</option>
+  <option value="250">250</option>
+  <option value="500">500</option>
+</select>
+<br>Rule Number (mod 256): <input type="text" id="ruleNo" size="4" value="30">
+<br>
+Animate: <input id="animateCheckbox" type="checkbox"><input id="stopAnimateButton" type="button" onclick="stopAnimate()" value="Stop Animation">
+<br><br>
+<input id="submitButton" type="button" onclick="submitClick()" value="Start Encryption">
+<br><br>
+<input id="selectAllButton" type="button" onclick="selectAll()" value="Select All"><input id="clearAllButton" type="button" onclick="clearAll()" value="Clear">
+</p></div>
+<div class="userInputRow"></div><div class="outputRows"></div>
+</center>
+
+</body>
+</html>

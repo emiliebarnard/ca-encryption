@@ -1,4 +1,0 @@
-$(function() {
-    $( "#selectable" ).selectable();
-  });
-  </script>
