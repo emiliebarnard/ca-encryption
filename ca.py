@@ -1,18 +1,20 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python3
 
 #(c) Emilie Menard Barnard, UC Regents
 #Project for Professor Koc's CS178 at UC Santa Barbara, Winter 2013
 
 #CELLULAR AUTOMATA ENCRYPTION
-print "Content-type: text/html\n"
 
 import copy
 import cgi
+
+print("Content-type: text/html\n")
 
 #The general rule lookup function helpers:
 
 #This is our 8-bit lookup table:
 lookupTable=([0,0,0,0,0,0,0,0])
+
 
 #This function creates the lookup table based on the inputted rule number:
 def createLookupTable(ruleNumber):
@@ -47,10 +49,10 @@ def ca(caVector, ruleNumber, numSteps):
             decRep=oldVector[r]+2*oldVector[q]+4*oldVector[p]
             caVector[vectorIndex]=lookupTable[(len(lookupTable)-1)-decRep]
             
-            print (repr(caVector[vectorIndex])),
+            print(repr(caVector[vectorIndex]), end="")
             
         if (vectorNum<numSteps):    
-        	print
+        	print()
 
     return
 
@@ -61,11 +63,14 @@ def ca(caVector, ruleNumber, numSteps):
 # JS interaction:
 try:
 	form=cgi.FieldStorage()
-	
+	#print("here")
 	rule=(int(form.getfirst("rule")))%256
+	#print("here1")
 	numSteps=int(form.getfirst("numSteps"))
+	#numSteps = 10
+	inputVector=form.getfirst("inputVector").split(" ")
+	#inputVector = "0 0 0 0 0 0 0 0 0".split(" ")
 
-	inputVector=form.getfirst("inputVector").split(" ")	
 	inputVector=[ int(x) for x in inputVector]
 	
 	createLookupTable(rule)
@@ -73,4 +78,4 @@ try:
 
 # For error debugging:
 except Exception as fail:
-	print "Failure: " + repr(fail)
+	print("Failure: " + repr(fail))
